@@ -24,3 +24,7 @@ Example usage:
 creates an xml -> <ROOT> <R id="1"/> </ROOT>
 
 Note: This method can only be used on client-side.
+
+
+Available on:
+npm -> npm install obj-to-xml
