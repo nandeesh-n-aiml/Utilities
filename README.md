@@ -13,4 +13,14 @@ If this value is set to:
   false, returns "XML".
 defaults to false.
   
+Example usage:
+{
+  ROOT: {
+    R: {
+      '@id': 1
+    }
+  }
+}
+creates an xml -> <ROOT> <R id="1"/> </ROOT>
+
 Note: This method can only be used on client-side.
