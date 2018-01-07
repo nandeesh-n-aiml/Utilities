@@ -1,30 +1,50 @@
-buildXmlFromObj:
+# obj-to-xml
 
-There are several situations where we need to send XML strings in REST API's while requesting a service from backend.
-To make this task at ease, I have created this method where it accepts two arguments.
+[![NPM Version][npm-image]][npm-url]
 
-Argument 1: (Object)
-Pass in any object which has to be converted to xml/string.
-Object's property which is defined with @, is treated as an "attribute".
+Converting an object into an XML
 
-Argument 2: (String) [optional]
-If this value is set to:
-  true, returns an xml in "string format".
-  false, returns "XML".
-defaults to false.
-  
-Example usage:
-{
-  ROOT: {
-    R: {
-      '@id': 1
+## Installation
+
+```sh
+$ npm install obj-to-xml
+```
+
+## API
+
+```js
+var objToXml = require('obj-to-xml');
+```
+
+### objToXml.buildXmlFromObj(object, toString)
+
+#### object
+
+Pass in any object which has to be converted to xml/string. Object's property which is defined with `@`, is treated as an "attribute".
+
+#### toString (Boolean) [optional]
+
+If value is set to `true`, it returns an xml in "string format". 
+If value is set to `false`, it returns an "XML". 
+Defaults to `false`.
+
+##### Usage example
+
+```js
+var objToXml = require('obj-to-xml');
+var obj = {
+    ROOT: {
+        R: {
+            '@id': 1
+        }
     }
-  }
 }
-creates an xml -> <ROOT> <R id="1"/> </ROOT>
+objToXml.buildXmlFromObj(obj);
+/* Returns an XML, since toString is undefined.
+<ROOT> <R id="1"/> </ROOT> */
 
-Note: This method can only be used on client-side.
+objToXml.buildXmlFromObj(obj, true);
+/* Returns XML string, since toString is set to true.
+'<ROOT> <R id="1"/> </ROOT>' */
 
-
-Available on:
-npm -> npm install obj-to-xml
+```
