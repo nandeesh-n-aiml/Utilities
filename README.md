@@ -65,7 +65,7 @@ Pass an XML object. Returns an XML string.
 ### FM.getXmlFromStr(str)
 
 Pass a string value. Returns an XML object.
-Supported in all browsers
+Supported in all browsers.
 
 ### Available on npm
 #### Installation
@@ -75,5 +75,6 @@ $ npm install obj-to-xml
 ```
 
 #### API
+```js
 var objToXml = require('obj-to-xml');
 ```
