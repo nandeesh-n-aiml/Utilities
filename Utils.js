@@ -3,16 +3,16 @@ var isIE = navigator.userAgent.indexOf('rv:11') > -1 || navigator.userAgent.inde
 var FM = {};
 FM.buildXmlFromObj = function (obj, strOutput) {
     /*  Pass an object to create an xml.
-		Format ->
-			ROOT: {
-				R: {
-					'@id': 1
-				}
-			}
-		creates an xml -> <ROOT> <R id="1"/> </ROOT>
-		Property which is defined with @, is treated as an attribute.
-		strOutput: Pass true to return XML in string format.
-	*/
+	Format ->
+	    ROOT: {
+		R: {
+	    	    '@id': 1
+		}
+	    }
+	creates an xml -> <ROOT> <R id="1"/> </ROOT>
+	Property which is defined with @, is treated as an attribute.
+	strOutput: Pass true to return XML in string format.
+    */
     var xmlOutput = function xmlFromObj(obj, xml) {
         var rootKey = Object.keys(obj),
             metaXml, keyElem, objValue, i, j;
@@ -30,7 +30,7 @@ FM.buildXmlFromObj = function (obj, strOutput) {
         for (i = 0; i < rootKey.length; i++) {
             keyElem = FM.removeSpacesFromTags(rootKey[i]);
             objValue = obj[rootKey[i]];
-            if (keyElem.includes('@')) {
+            if (keyElem.indexOf('@') > -1) {
                 xml.setAttributeNS('', keyElem.slice(1, keyElem.length), objValue);
             }
             if (typeof objValue == 'object') {
@@ -72,6 +72,12 @@ FM.stringReplaceAll = function (str, fromStr, toStr) {
 
 FM.removeSpacesFromTags = function (str) {
     return FM.stringReplaceAll(str, ' ', '-');
+}
+
+FM.getTimeStamp = function () {
+    var date = new Date();
+    var timeStamp = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear() + '::' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' ';
+    return timeStamp;
 }
 
 Object.freeze(FM);
