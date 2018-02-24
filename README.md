@@ -1,22 +1,7 @@
-# obj-to-xml
+# Utility Functions (Supported in Chrome, Firefox, IE, Edge)
 
-[![NPM Version][npm-image]][npm-url]
-
-Converting an object into an XML
-
-## Installation
-
-```sh
-$ npm install obj-to-xml
-```
-
-## API
-
-```js
-var objToXml = require('obj-to-xml');
-```
-
-### objToXml.buildXmlFromObj(object, toString)
+## Documentation
+### FM.buildXmlFromObj(object, toString)
 
 #### object
 
@@ -28,10 +13,9 @@ If value is set to `true`, it returns an xml in "string format".
 If value is set to `false`, it returns an "XML". 
 Defaults to `false`.
 
-##### Usage example
+##### Usage
 
 ```js
-var objToXml = require('obj-to-xml');
 var obj = {
     ROOT: {
         R: {
@@ -39,12 +23,57 @@ var obj = {
         }
     }
 }
-objToXml.buildXmlFromObj(obj);
+FM.buildXmlFromObj(obj);
 /* Returns an XML, since toString is undefined.
 <ROOT> <R id="1"/> </ROOT> */
 
-objToXml.buildXmlFromObj(obj, true);
+FM.buildXmlFromObj(obj, true);
 /* Returns XML string, since toString is set to true.
 '<ROOT> <R id="1"/> </ROOT>' */
 
+```
+
+To get a list of items, pass an array as value to the object's property.
+
+```js
+var obj = {
+    STUDENTS: {
+        S: [{
+            '@id': 1,
+            '@name': 'Nandeesh'
+        }, {
+            '@id': 2,
+            '@name': 'Stanley'
+        }]
+    }
+}
+FM.buildXmlFromObj(obj);
+/* returns an XML,
+
+<STUDENTS>
+	<S id="1" name="Nandeesh"/>
+	<S id="2" name="Stanley"/>
+</STUDENTS>
+*/
+
+```
+
+### FM.getStrFromXml(xml)
+
+Pass an XML object. Returns an XML string.
+
+### FM.getXmlFromStr(str)
+
+Pass a string value. Returns an XML object.
+Supported in all browsers
+
+### Available on npm
+#### Installation
+
+```sh
+$ npm install obj-to-xml
+```
+
+#### API
+var objToXml = require('obj-to-xml');
 ```
