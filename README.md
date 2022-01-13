@@ -1,4 +1,4 @@
-# Utility Functions (Supported in Chrome, Firefox, IE, Edge)
+# Vanilla JavaScript Utility Functions (Supported in Chrome, Firefox, IE, Edge)
 
 ## Documentation
 ### FM.buildXmlFromObj(object, toString)
